@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//Kontroler to ta część aplikacji , która otrzymuje z zewnątrz żądania i daje odpowiedzi.
 @RestController
 @RequestMapping("/v1/task")
 public class TaskController {
