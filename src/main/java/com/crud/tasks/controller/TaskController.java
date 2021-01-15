@@ -7,10 +7,10 @@ import com.crud.tasks.service.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 //Kontroler to ta część aplikacji , która otrzymuje z zewnątrz żądania i daje odpowiedzi.
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/task")
 public class TaskController {
@@ -24,7 +24,7 @@ public class TaskController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDTO> getTasks() {
-        return new ArrayList<>();
+        return taskMapper.mapToTaskDtoList(service.getAllTasks());
     }
     @RequestMapping(method = RequestMethod.GET, value = "getTask")
     public TaskDTO getTask(@RequestParam Long taskId) throws TaskNotFoundException {
@@ -37,7 +37,7 @@ public class TaskController {
         service.deleteTask(taskId);
     }
     @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
-    public TaskDTO updateTask(TaskDTO taskDto) {
+    public TaskDTO updateTask(@RequestBody TaskDTO taskDto) {
         Task task = taskMapper.mapToTask(taskDto);
         Task savedTask = service.saveTask(task);
         return taskMapper.mapToTaskDto(savedTask);
