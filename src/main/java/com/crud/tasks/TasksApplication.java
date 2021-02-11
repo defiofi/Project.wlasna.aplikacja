@@ -6,12 +6,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-//public class TasksApplication extends SpringBootServletInitializer {							- HEROKU
+//public class TasksApplication extends SpringBootServletInitializer {							//- TOMCAT
 public class TasksApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TasksApplication.class, args);
 	}
-	//@Override																					- HEROKU
-	//protected SpringApplicationBuilder configure (SpringApplicationBuilder application) {		- HEROKU
-	//	return application.sources(TasksApplication.class); }									- HEROKU
+	//@Override																					//- TOMCAT
+	//protected SpringApplicationBuilder configure (SpringApplicationBuilder application) {		//- TOMCAT
+		//return application.sources(TasksApplication.class); }									//- TOMCAT
 }
