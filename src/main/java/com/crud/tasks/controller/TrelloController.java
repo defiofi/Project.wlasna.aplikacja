@@ -14,15 +14,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TrelloController {
 
-    private final TrelloClient trelloClient;
+    private final TrelloClient trelloService;
 
     @GetMapping("getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
-        return trelloClient.getTrelloBoards();
+        return trelloService.getTrelloBoards();
 
     }
     @PostMapping("createTrelloCard")
     public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
-        return trelloClient.createNewCard(trelloCardDto);
+        return trelloService.createNewCard(trelloCardDto);
     }
 }

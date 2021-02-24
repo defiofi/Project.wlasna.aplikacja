@@ -40,7 +40,6 @@ public class TrelloClient {
                     .orElse(Collections.emptyList())
                     .stream()
                     .filter(p -> Objects.nonNull(p.getId()) && Objects.nonNull(p.getName()))
-                    //.filter(p -> p.getName().contains("Kodilla"))
                     .collect(Collectors.toList());
         } catch (RestClientException e) {
             LOGGER.error(e.getMessage(), e);
@@ -69,6 +68,6 @@ public class TrelloClient {
                 .build()
                 .encode()
                 .toUri();
-        return restTemplate.postForObject(url, null, CreatedTrelloCard.class);
+        return restTemplate.postForObject(url, trelloCardDto, CreatedTrelloCard.class);
     }
 }
