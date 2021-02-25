@@ -19,14 +19,7 @@ import org.slf4j.LoggerFactory;
 @Component
 @RequiredArgsConstructor
 public class TrelloClient {
-    /*@Value("${trello.api.endpoint.prod}")
-    private String trelloApiEndpoint;
-    @Value("${trello.app.key}")
-    private String trelloAppKey;
-    @Value("${trello.app.token}")
-    private String trelloToken;
-    @Value("${trello.username}")
-    private String trelloUserName;*/
+
     private final RestTemplate restTemplate;
     private final TrelloConfig trelloConfig;
     protected final Logger LOGGER = LoggerFactory.getLogger(TrelloClient.class);
