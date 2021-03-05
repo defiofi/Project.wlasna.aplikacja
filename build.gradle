@@ -23,8 +23,8 @@ dependencies {
 	}
 	compileOnly 'org.projectlombok:lombok:1.18.16'
 	annotationProcessor 'org.projectlombok:lombok:1.18.16'
-	//runtimeOnly 'mysql:mysql-connector-java'		//Sterownik bazy MYSQL
-	runtimeOnly 'org.postgresql:postgresql'	// HEROKU
+	runtimeOnly 'mysql:mysql-connector-java'		//Sterownik bazy MYSQL
+	//runtimeOnly 'org.postgresql:postgresql'	// HEROKU
 	testCompileOnly 'org.projectlombok:lombok:1.18.16'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
 	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'	// WBUDOWANY  SERWER TOMCAT
