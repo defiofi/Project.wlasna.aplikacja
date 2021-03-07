@@ -14,6 +14,10 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Entity(name = "tasks")
 public class Task {
+    public Task(String title , String content){
+        this.title = title;
+        this.content = content;
+    }
     @Id
     @GeneratedValue
     private Long id;
