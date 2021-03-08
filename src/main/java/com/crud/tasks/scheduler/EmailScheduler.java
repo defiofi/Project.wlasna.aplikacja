@@ -17,7 +17,7 @@ public class EmailScheduler {
     private static final String SUBJECT = "Tasks: Once a day email";
 
     @Scheduled(cron = "0 0 10 * * *")
-    public void sendInformationEmail() {
+    public Mail sendInformationEmail() {
         long size = taskRepository.count();
         String message;
         if (size == 1){
@@ -25,15 +25,13 @@ public class EmailScheduler {
         } else {
            message =  "Currently in database you got: " + size + " tasks";
         }
-
-        simpleEmailService.send(
-                new Mail(
-                        adminConfig.getAdminMail(),
-                        SUBJECT,
-                        message,
-                        null
-                )
-        );
+        Mail mail = new Mail(
+        adminConfig.getAdminMail(),
+        SUBJECT,
+        message,
+        null);
+        simpleEmailService.send(mail);
+        return mail;
     }
 }
 

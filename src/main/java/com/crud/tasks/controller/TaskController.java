@@ -7,7 +7,6 @@ import com.crud.tasks.service.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
 import java.util.List;
 //Kontroler to ta część aplikacji , która otrzymuje z zewnątrz żądania i daje odpowiedzi.
 @CrossOrigin(origins = "*")

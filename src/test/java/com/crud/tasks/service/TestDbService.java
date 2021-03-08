@@ -20,12 +20,15 @@ public class TestDbService {
         //GIVEN
         DbService dbService = new DbService(taskRepository);
         Task task = new Task("name test","tekst");
+
         //WHEN
         dbService.saveTask(task);
         long id = task.getId();
         List<Task> taskList=  dbService.getAllTasks();
+
         //THEN
         assertTrue(taskList.size()>0);
+
         //CLEAN
         dbService.deleteTask(id);
     }
@@ -34,14 +37,17 @@ public class TestDbService {
         //GIVEN
         DbService dbService = new DbService(taskRepository);
         Task task = new Task("name test","tekst");
+
         //WHEN
         dbService.saveTask(task);
         long id = task.getId();
         Optional<Task> observedTask = dbService.getTask(id);
+
         //THEN
         assertTrue(observedTask.isPresent());
         assertEquals("name test",observedTask.get().getTitle());
         assertEquals("tekst",observedTask.get().getContent());
+
         //CLEAN
         dbService.deleteTask(id);
     }
@@ -50,14 +56,36 @@ public class TestDbService {
         //GIVEN
         DbService dbService = new DbService(taskRepository);
         Task task = new Task("name test", "tekst");
+
         //WHEN
         dbService.saveTask(task);
         long id = task.getId();
         Optional<Task> observedTask = dbService.getTask(id);
+
         //THEN
         assertTrue(observedTask.isPresent());
         dbService.deleteTask(id);
         observedTask = dbService.getTask(id);
         assertFalse(observedTask.isPresent());
+    }
+    @Test
+    public void TestDbServiceSaveTask(){
+        //GIVEN
+        DbService dbService = new DbService(taskRepository);
+        Task task = new Task("name test", "tekst");
+
+        //WHEN
+        dbService.saveTask(task);
+        long id = task.getId();
+        Optional<Task> observedTask = dbService.getTask(id);
+
+        //THEN
+        assertTrue(observedTask.isPresent());
+        assertEquals("name test",observedTask.get().getTitle());
+        assertEquals("tekst",observedTask.get().getContent());
+
+        //CLEAN
+        dbService.deleteTask(id);
+
     }
 }
