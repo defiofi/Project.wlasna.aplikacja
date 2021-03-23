@@ -1,6 +1,7 @@
 package com.crud.tasks.service;
 
 import com.crud.tasks.domain.Mail;
+import com.crud.tasks.scheduler.EmailScheduler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.pretty.MessageHelper;
@@ -20,10 +21,12 @@ public class SimpleEmailService {             //Klasa do stworzenia i wysłania 
     @Autowired
     private MailCreatorService mailCreatorService;
 
-    public void send(Mail mail){
+    public void send(Mail mail, int mailType){      // 1 - Mail z założenia karty Trello  ; 2 - Mail codzienny
         log.info("Rozpoczęcie przygotowania maila...");
         try{
-            MimeMessagePreparator mailMessage = createMimeMessage(mail);
+            MimeMessagePreparator mailMessage;
+            if (mailType == 1){ mailMessage = createMimeMessage(mail);}
+            else { mailMessage = createMimeMessageDaily(mail);}
             javaMailSender.send(mailMessage);
             log.info("email wyslany");
         } catch (MailException e){
@@ -37,6 +40,15 @@ public class SimpleEmailService {             //Klasa do stworzenia i wysłania 
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
             messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+        };
+    }
+
+    private MimeMessagePreparator createMimeMessageDaily(final Mail mail){
+        return mimeMessage -> {
+            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+            messageHelper.setTo(mail.getMailTo());
+            messageHelper.setSubject(mail.getSubject());
+            messageHelper.setText(mailCreatorService.buildInformationEmail(), true);
         };
     }
 

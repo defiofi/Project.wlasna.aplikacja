@@ -30,7 +30,7 @@ public class EmailScheduler {
         SUBJECT,
         message,
         null);
-        simpleEmailService.send(mail);
+        simpleEmailService.send(mail,2);
         return mail;
     }
 }

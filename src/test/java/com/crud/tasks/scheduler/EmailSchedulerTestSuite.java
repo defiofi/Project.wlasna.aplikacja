@@ -19,6 +19,7 @@ public class EmailSchedulerTestSuite {
     private JavaMailSender javaMailSender;
     @Autowired
     private TaskRepository taskRepository;
+
     @Test
     public void TestEmailSchedulerSendInformationMail(){
         //GIVEN
