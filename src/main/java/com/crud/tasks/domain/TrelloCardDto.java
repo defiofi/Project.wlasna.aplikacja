@@ -3,7 +3,7 @@ package com.crud.tasks.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@Data                       //Zamiast: @Getter & @AllArgsConstructor & @NoArgsConstructor
+@Data
 @AllArgsConstructor
 public class TrelloCardDto {
 

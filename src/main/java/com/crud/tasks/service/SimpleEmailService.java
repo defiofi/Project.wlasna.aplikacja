@@ -1,10 +1,8 @@
 package com.crud.tasks.service;
 
 import com.crud.tasks.domain.Mail;
-import com.crud.tasks.scheduler.EmailScheduler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.pretty.MessageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -16,12 +14,12 @@ import org.springframework.stereotype.Service;
 @Slf4j      //ADNOTACJA LOGERA
 @Service
 @RequiredArgsConstructor
-public class SimpleEmailService {             //Klasa do stworzenia i wysłania mail
+public class SimpleEmailService {
     private final JavaMailSender javaMailSender;
     @Autowired
     private MailCreatorService mailCreatorService;
 
-    public void send(Mail mail, int mailType){      // 1 - Mail z założenia karty Trello  ; 2 - Mail codzienny
+    public void send(Mail mail, int mailType){      /** 1 - Mail z założenia karty Trello  ; 2 - Mail codzienny */
         log.info("Rozpoczęcie przygotowania maila...");
         try{
             MimeMessagePreparator mailMessage;

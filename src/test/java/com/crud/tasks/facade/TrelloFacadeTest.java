@@ -38,7 +38,6 @@ class TrelloFacadeTest {
     @Test
     void shouldFetchEmptyList() {
         //GIVEN
-// Given
         List<TrelloListDto> trelloLists =
                 List.of(new TrelloListDto("1", "test_list", false));
 

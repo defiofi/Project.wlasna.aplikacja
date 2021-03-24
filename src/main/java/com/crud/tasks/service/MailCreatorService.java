@@ -5,7 +5,6 @@ import com.crud.tasks.repository.TaskRepository;
 import com.crud.tasks.trello.config.CompanyDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
